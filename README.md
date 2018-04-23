@@ -16,4 +16,4 @@ The JRE bundle contains lots of unnecessary kit for a Docker container, so we cl
 
 `latest` (`master` branch) download image size is:
 
-[![](https://images.microbadger.com/badges/image/dmreiland/alpine-tomcat8:latest.svg)](http://microbadger.com/images/frolvlad/alpine-tomcat8:latest "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/dmreiland/alpine-tomcat8:latest.svg)](http://microbadger.com/images/dmreiland/alpine-tomcat8:latest "Get your own image badge on microbadger.com")
