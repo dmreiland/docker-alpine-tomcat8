@@ -15,9 +15,9 @@ RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates unzip c
     cd "/tmp" && \
     wget --header "Cookie: oraclelicense=accept-securebackup-cookie;" \
         "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}u${JAVA_UPDATE}-b${JAVA_BUILD}/${JAVA_PATH}/server-jre-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" && \
-    tar -xzf "jre-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" && \
+    tar -xzf "server-jre-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" && \
     mkdir -p "/usr/lib/jvm/java-${JAVA_VERSION}-oracle" && \
-    mv "/tmp/jre1.${JAVA_VERSION}.0_${JAVA_UPDATE}" "/usr/lib/jvm/java-${JAVA_VERSION}-oracle/jre" && \
+    mv "/tmp/jdk1.${JAVA_VERSION}.0_${JAVA_UPDATE}" "/usr/lib/jvm/java-${JAVA_VERSION}-oracle/jre" && \
     ln -s "java-${JAVA_VERSION}-oracle" "$JAVA_HOME" && \
     ln -s "$JAVA_HOME/jre/bin/"* "/usr/bin/" && \
     rm -rf "$JAVA_HOME/"*src.zip && \
@@ -45,7 +45,8 @@ RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates unzip c
     unzip -jo -d "${JAVA_HOME}/jre/lib/security" "jce_policy-${JAVA_VERSION}.zip" && \
     rm "${JAVA_HOME}/jre/lib/security/README.txt" && \
     curl -jksSL -o /tmp/apache-tomcat.tar.gz http://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
-    tar -C /opt xfz /tmp/apache-tomcat.tar.gz && \
+    mkdir /opt && \
+    tar -C /opt -xzf /tmp/apache-tomcat.tar.gz && \
     ln -s /opt/apache-tomcat-${TOMCAT_VERSION} ${TOMCAT_HOME} && \
     rm -rf ${TOMCAT_HOME}/webapps/* && \
     apk del build-dependencies curl wget unzip && \
