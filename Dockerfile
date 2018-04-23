@@ -18,7 +18,7 @@ RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates unzip c
     tar -xzf "server-jre-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" && \
     mkdir -p "/usr/lib/jvm/java-${JAVA_VERSION}-oracle" && \
     mv "/tmp/jdk1.${JAVA_VERSION}.0_${JAVA_UPDATE}" "/usr/lib/jvm/java-${JAVA_VERSION}-oracle/jre" && \
-    ln -s "java-${JAVA_VERSION}-oracle" "$JAVA_HOME" && \
+    ln -s "java-${JAVA_VERSION}-oracle/jre" "$JAVA_HOME" && \
     ln -s "$JAVA_HOME/jre/bin/"* "/usr/bin/" && \
     rm -rf "$JAVA_HOME/"*src.zip && \
     rm -rf "$JAVA_HOME/lib/missioncontrol" \
