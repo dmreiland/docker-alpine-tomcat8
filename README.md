@@ -4,9 +4,9 @@
 
 # Tomcat 8 and Oracle JRE 8 Docker image
 
-This image is based on Alpine Linux image, which is only a 5MB image, and contains
-[Oracle JRE 8](http://www.oracle.com/technetwork/java/javase/overview/index.html).
-[Apache Tomcat 8](https://tomcat.apache.org/download-80.cgi).
+This image is based on Alpine Linux image, which is only a 5MB image, and contains:
+[Oracle JRE 8](http://www.oracle.com/technetwork/java/javase/overview/index.html)
+[Apache Tomcat 8](https://tomcat.apache.org/download-80.cgi)
 
 You must accept the
 [Oracle Binary Code License Agreement for Java SE](http://www.oracle.com/technetwork/java/javase/terms/license/index.html)
