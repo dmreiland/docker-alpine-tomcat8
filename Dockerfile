@@ -53,10 +53,10 @@ RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates unzip c
     curl -jksSL -o /tmp/tomcat-slf4j-logback.zip ${TOMCAT_SLF4J_LOGBACK_DOWNLOAD} && \
     mkdir /tmp/tomcat-slf4j-logback && \
     unzip -o -d "/tmp/tomcat-slf4j-logback" "/tmp/tomcat-slf4j-logback.zip" && \
-    cp -Rf /tmp/tomcat-slf4j-logback/bin /opt/apache-tomcat-${TOMCAT_VERSION}/bin && \
-    cp -Rf /tmp/tomcat-slf4j-logback/conf /opt/apache-tomcat-${TOMCAT_VERSION}/conf && \
-    cp -Rf /tmp/tomcat-slf4j-logback/lib /opt/apache-tomcat-${TOMCAT_VERSION}/lib && \
-    rm -f /opt/apache-tomcat-${TOMCAT_VERSION}/logging.properties && \
+    cp -Rf /tmp/tomcat-slf4j-logback/bin/* /opt/apache-tomcat-${TOMCAT_VERSION}/bin/ && \
+    cp -Rf /tmp/tomcat-slf4j-logback/conf/* /opt/apache-tomcat-${TOMCAT_VERSION}/conf/ && \
+    cp -Rf /tmp/tomcat-slf4j-logback/lib/* /opt/apache-tomcat-${TOMCAT_VERSION}/lib/ && \
+    rm -f /opt/apache-tomcat-${TOMCAT_VERSION}/conf/logging.properties && \
     apk del build-dependencies curl wget unzip && \
     rm -rf /tmp/* /var/cache/apk/*
 
