@@ -16,4 +16,6 @@ The JRE bundle contains lots of unnecessary kit for a Docker container, so we cl
 
 `latest` (`master` branch) download image size is:
 
+Because I'm opinionated, and don't care for the default logging that Tomcat as, I have replaced it with [SLF4J Logback](https://github.com/tomcat-slf4j-logback/tomcat-slf4j-logback).
+
 [![](https://images.microbadger.com/badges/image/dmreiland/alpine-tomcat8:latest.svg)](http://microbadger.com/images/dmreiland/alpine-tomcat8:latest "Get your own image badge on microbadger.com")

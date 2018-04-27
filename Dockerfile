@@ -9,7 +9,8 @@ ENV JAVA_VERSION=8 \
     TOMCAT_VERSION=8.0.51 \
     TOMCAT_HOME=/opt/tomcat \
     CATALINA_HOME=/opt/tomcat \
-    CATALINA_OUT=/dev/null
+    CATALINA_OUT=/dev/null \
+    TOMCAT_SLF4J_LOGBACK_DOWNLOAD=https://github.com/tomcat-slf4j-logback/tomcat-slf4j-logback/releases/download/tomcat8/tomcat-juli-8.0.51-slf4j-1.7.25-logback-1.2.3.zip
 
 RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates unzip curl && \
     cd "/tmp" && \
@@ -49,7 +50,16 @@ RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates unzip c
     tar -C /opt -xzf /tmp/apache-tomcat.tar.gz && \
     ln -s /opt/apache-tomcat-${TOMCAT_VERSION} ${TOMCAT_HOME} && \
     rm -rf ${TOMCAT_HOME}/webapps/* && \
+    curl -jksSL -o /tmp/tomcat-slf4j-logback.zip ${TOMCAT_SLF4J_LOGBACK_DOWNLOAD} && \
+    mkdir /tmp/tomcat-slf4j-logback && \
+    unzip -o -d "/tmp/tomcat-slf4j-logback" "/tmp/tomcat-slf4j-logback.zip" && \
+    cp -Rf /tmp/tomcat-slf4j-logback/bin /opt/apache-tomcat-${TOMCAT_VERSION}/bin && \
+    cp -Rf /tmp/tomcat-slf4j-logback/conf /opt/apache-tomcat-${TOMCAT_VERSION}/conf && \
+    cp -Rf /tmp/tomcat-slf4j-logback/lib /opt/apache-tomcat-${TOMCAT_VERSION}/lib && \
+    rm -f /opt/apache-tomcat-${TOMCAT_VERSION}/logging.properties && \
     apk del build-dependencies curl wget unzip && \
     rm -rf /tmp/* /var/cache/apk/*
+
+COPY conf/* /opt/apache-tomcat-${TOMCAT_VERSION}/conf/
 
 EXPOSE 8080
